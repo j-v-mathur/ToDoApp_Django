@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+{% block title %}ToDo App{% endblock title%}
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+<div class="container my-3">
+  <form action="/todo_details" method="post">
+    {% csrf_token %} 
+    <legend>Todo Detail</legend>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" id="title" name="title" class="form-control" value="{{ q.0.title }}">
+    </div>
+    <div class="mb-3">
+      <label for="desc" class="form-label">Description</label>
+      <textarea id="desc" name="desc" class="form-control">{{ q.0.desc }}</textarea>
+    </div>
+    <button type="submit" name="update" class="btn btn-dark">Update</button>
+  </form>
+  <br>
+  <form action="/todo_details" method="post">
+    {% csrf_token %}
+    <button type="submit" name="delete" class="btn btn-dark">Delete</button>
+  </form>
+</div>
+
+{% endblock body %}
